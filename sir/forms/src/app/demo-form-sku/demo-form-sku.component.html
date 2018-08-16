@@ -1,0 +1,45 @@
+<div class="ui raised segment">
+  <h2 class="ui header">Demo Form: Sku</h2>
+  <!--<form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="ui form">-->
+  <form #f="ngForm" (ngSubmit)="onSubmit()" class="ui form" >
+    {{f.value|json}}
+    <div class="field">
+      <label for="eid">Employee Id</label>
+      <input type="text" id="eid" placeholder="Enter Emp Id" #f1 name="eid" required minlength="4"  maxlength="5" [(ngModel)]="e.eid">
+    </div>
+  <p> {{f1.className}}</p>
+  
+
+    <div class="field">
+      <label for="ename">Employee Name</label>
+      <input type="text" id="ename" placeholder="Enter Emp Name" name="ename" #f2="ngModel"  required minlength="4" maxlength="10"  [(ngModel)]="e.ename">
+    </div>
+    
+    <p> {{f2.className}}</p>
+
+    <div *ngIf="f2.invalid && (f2.dirty || f2.touched)"
+    id="a">
+
+      <div *ngIf="f2.errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="f2.errors.minlength">
+        Name must be at least 4 characters long.
+      </div>
+      <div *ngIf="f2.errors.forbiddenName">
+        Name cannot be Bob.
+      </div>
+     
+    </div>
+   
+    
+
+    <div class="field">
+      <label for="sal">Employee Salary</label>
+      <input type="text" id="sal" placeholder="Enter Emp Salary" name="sal" #f3 required [(ngModel)]="e.sal">
+    </div>
+    <p>{{f3.className}}</p>
+    
+  <button type="submit" class="ui button">Submit</button>
+  </form>
+</div>
